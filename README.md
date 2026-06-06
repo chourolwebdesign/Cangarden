@@ -1,37 +1,46 @@
-# Can Garten- und Landschaftsbau — Premium Website
+# Can Garten- und Landschaftsbau — Website
 
-Ultra-premium, cinematic website for the German Garten- und Landschaftsbau
-company **Can Garten- und Landschaftsbau**. Built to feel like a luxury
-architecture studio: dark obsidian palette, elegant gold accents,
-glassmorphism, and refined motion design.
+A premium, trustworthy website for the German Garten- und Landschaftsbau
+company **Can Garten- und Landschaftsbau**. The design is bright, welcoming and
+nature-focused — built to feel like an established, family-run craftsmanship
+business, not a flashy agency. Visitors should think: *„Diese Firma macht
+saubere Arbeit und weiß genau, was sie tut.“*
+
+## Design Direction
+
+- **Natural green palette** (forest, moss, fern, sage) with earthy clay/stone
+  tones and warm cream/linen backgrounds — bright, light and welcoming.
+- **Sturdy, classic typography**: Bitter (slab serif) headings + Inter body.
+- **Real project photography throughout** — every image is from an actual
+  completed job (`public/projects/`).
+- Conversion- and trust-focused: phone number always visible, clear CTAs,
+  process transparency, real references and customer voices.
 
 ## Tech Stack
 
 - **Next.js 15** (App Router) + **React 19** + **TypeScript**
-- **Tailwind CSS** (custom luxury design tokens)
-- **Framer Motion** — scroll-triggered reveals, page motion, micro-interactions
-- **Lenis** — buttery smooth scrolling (desktop, respects reduced-motion)
-- **Three.js** — performance-minded floating premium paving stones in the hero
-- **GSAP** — available for timeline-based animation extensions
+- **Tailwind CSS** (custom natural design tokens)
+- **Framer Motion** for subtle, tasteful scroll reveals
+- **Lenis** for smooth scrolling (desktop, respects reduced-motion)
 
-## Features
+## Sections
 
-- **Cinematic hero** — full-screen, parallax + Ken-Burns imagery, Three.js
-  floating stone slabs with pointer parallax, animated headline, and elegant
-  counter-animated statistics (500+ Projekte · 10+ Jahre · 98% Zufriedenheit).
-- **Services** — four luxury service cards (Pflasterarbeiten, Zaunbau,
-  Gartenpflege, Rollrasen) with 3D tilt, floating icons, and reveal animations.
-- **Portfolio** — filterable masonry gallery, hover zoom + title reveal,
-  before/after slider, and a lightbox with project details.
-- **Testimonials** — auto-playing + manual carousel with 5-star ratings.
-- **Werte** — trust & values grid (Meisterhafte Qualität, Deutsche Präzision,
-  Termintreue, Individuelle Beratung, Nachhaltigkeit).
-- **Contact** — premium validated form (with honeypot + API route),
-  interactive Google Map, click-to-call, and WhatsApp CTAs.
-- **Floating WhatsApp button**, sticky glass navbar, animated mobile menu.
-- **SEO** — metadata, OpenGraph, JSON-LD LocalBusiness, sitemap & robots.
-- **Accessibility** — semantic markup, focus states, ARIA, reduced-motion
-  support. **Dark mode only**.
+1. **Trust top-bar + sticky navbar** — region, hours, click-to-call, CTA.
+2. **Hero** — large real project photo with a natural green overlay,
+   headline *„Ihr Partner für Garten- und Landschaftsbau“*, CTAs
+   (Kostenloses Angebot anfordern / Referenzen ansehen) and trust badges.
+3. **Trust bar** — animated stats (15+ Jahre, 750+ Projekte, Festpreis, 4,9★).
+4. **Leistungen** — Pflasterarbeiten, Zaunbau, Gartenpflege, Rollrasen with
+   real photos and feature lists.
+5. **So arbeiten wir** — 4-step process (Beratung → Planung/Festpreis →
+   Ausführung → Übergabe).
+6. **Referenzen** — filterable real-project gallery with lightbox **plus a
+   Vorher/Nachher slider**.
+7. **Über uns** — experience, values and trust factors with a photo collage.
+8. **Kundenstimmen** — regional testimonials carousel (auto + manual).
+9. **Kontakt** — validated form (with API route + honeypot), contact details,
+   interactive map, **service-area list**, click-to-call and WhatsApp.
+10. **Footer** + floating WhatsApp button.
 
 ## Getting Started
 
@@ -44,17 +53,18 @@ npm run start    # serve the production build
 
 ## Configuration
 
-- **Company data** (name, phone, email, address, map, services, projects,
-  testimonials, values) lives in [`src/lib/data.ts`](src/lib/data.ts) — edit
-  there to update all content.
-- **Lead routing**: the contact form posts to `/api/contact`. Set the
-  `CONTACT_WEBHOOK_URL` env var to relay leads to your email service / CRM
+- **All content** (company data, services, projects, testimonials, process,
+  values, service areas) lives in [`src/lib/data.ts`](src/lib/data.ts).
+- **Project photos** are in [`public/projects/`](public/projects/). To add or
+  swap references, drop in images and reference them in `data.ts`.
+- **Lead routing**: the contact form posts to `/api/contact`. Set
+  `CONTACT_WEBHOOK_URL` to relay leads to your email service / CRM
   (e.g. Resend, SendGrid, Make, Zapier). Without it, leads are logged.
-- **Images** are loaded from Unsplash for the demo (configured in
-  `next.config.mjs`). Replace with real project photography for production.
 
-## Notes
+## Notes for going live
 
-The hero is designed to also support an 8K drone video background — drop a video
-file in `public/` and swap the `<Image>` in `src/components/Hero.tsx` for a
-`<video>` element with the image as the poster.
+- Replace the placeholder **phone, e-mail and address** in `src/lib/data.ts`.
+- Add real **Zaunbau** photos (the current set is mostly Pflasterarbeiten).
+- Provide true **Vorher/Nachher pairs** (same project) for the slider —
+  configured in `BEFORE_AFTER` in `data.ts`.
+- Fill in **Impressum / Datenschutz** (legally required in Germany).

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, MapPin, Clock } from "lucide-react";
 import { NAV_LINKS, COMPANY } from "@/lib/data";
 
 export default function Navbar() {
@@ -10,7 +10,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -25,60 +25,77 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Trust top-bar */}
+      <div className="relative z-50 hidden bg-forest-900 text-cream/90 lg:block">
+        <div className="container-w flex items-center justify-between py-2 text-xs">
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-2">
+              <MapPin className="h-3.5 w-3.5 text-sage-light" />
+              {COMPANY.region}
+            </span>
+            <span className="flex items-center gap-2">
+              <Clock className="h-3.5 w-3.5 text-sage-light" />
+              {COMPANY.hours}
+            </span>
+          </div>
+          <a
+            href={`tel:${COMPANY.phoneHref}`}
+            className="flex items-center gap-2 font-semibold transition-colors hover:text-sage-light"
+          >
+            <Phone className="h-3.5 w-3.5 text-sage-light" />
+            {COMPANY.phone}
+          </a>
+        </div>
+      </div>
+
       <motion.header
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "glass border-b border-white/5 py-3"
-            : "border-b border-transparent py-5"
+            ? "border-b border-stone/15 bg-cream/95 py-3 shadow-soft backdrop-blur-md"
+            : "border-b border-transparent bg-cream/80 py-4 backdrop-blur-sm"
         }`}
       >
-        <nav className="container-luxe flex items-center justify-between">
-          <a
-            href="#top"
-            className="group flex flex-col leading-none"
-            aria-label={COMPANY.name}
-          >
-            <span className="font-display text-lg font-bold tracking-wider2 text-ivory transition-colors group-hover:text-gold">
-              CAN
+        <nav className="container-w flex items-center justify-between">
+          <a href="#top" className="flex items-center gap-3" aria-label={COMPANY.name}>
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest font-display text-lg font-bold text-cream">
+              C
             </span>
-            <span className="text-[10px] uppercase tracking-luxe text-gold/70">
-              Garten &amp; Landschaftsbau
+            <span className="flex flex-col leading-none">
+              <span className="font-display text-lg font-bold text-forest-900">
+                Can <span className="text-moss">GaLaBau</span>
+              </span>
+              <span className="text-[10px] uppercase tracking-wider3 text-bark/50">
+                Garten- &amp; Landschaftsbau
+              </span>
             </span>
           </a>
 
-          <ul className="hidden items-center gap-9 lg:flex">
+          <ul className="hidden items-center gap-8 lg:flex">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="group relative text-sm font-medium text-ivory/70 transition-colors hover:text-ivory"
+                  className="group relative text-sm font-medium text-bark/80 transition-colors hover:text-forest"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1.5 left-0 h-0.5 w-0 rounded-full bg-fern transition-all duration-300 group-hover:w-full" />
                 </a>
               </li>
             ))}
           </ul>
 
-          <div className="hidden items-center gap-4 lg:flex">
-            <a
-              href={`tel:${COMPANY.phoneHref}`}
-              className="flex items-center gap-2 text-sm text-ivory/70 transition-colors hover:text-gold"
-            >
-              <Phone className="h-4 w-4" />
-              {COMPANY.phone}
-            </a>
-            <a href="#kontakt" className="btn-gold !px-6 !py-3 text-xs">
-              Angebot erhalten
+          <div className="hidden lg:block">
+            <a href="#kontakt" className="btn-primary !py-3 text-sm">
+              Angebot anfordern
             </a>
           </div>
 
           <button
             onClick={() => setOpen(true)}
-            className="text-ivory lg:hidden"
+            className="text-forest lg:hidden"
             aria-label="Menü öffnen"
           >
             <Menu className="h-7 w-7" />
@@ -92,31 +109,31 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-[60] flex flex-col bg-obsidian/98 backdrop-blur-xl lg:hidden"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[60] flex flex-col bg-cream lg:hidden"
           >
-            <div className="container-luxe flex items-center justify-between py-5">
-              <span className="font-display text-lg tracking-wider2 text-ivory">
-                CAN
+            <div className="container-w flex items-center justify-between py-4">
+              <span className="font-display text-lg font-bold text-forest-900">
+                Can <span className="text-moss">GaLaBau</span>
               </span>
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Menü schließen"
-                className="text-ivory"
+                className="text-forest"
               >
                 <X className="h-7 w-7" />
               </button>
             </div>
-            <div className="flex flex-1 flex-col justify-center gap-2 px-8">
+            <div className="flex flex-1 flex-col justify-center gap-1 px-7">
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  initial={{ opacity: 0, x: 30 }}
+                  initial={{ opacity: 0, x: 24 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + i * 0.07 }}
-                  className="border-b border-white/5 py-5 font-serif text-3xl text-ivory/90 transition-colors hover:text-gold"
+                  transition={{ delay: 0.08 + i * 0.06 }}
+                  className="border-b border-stone/15 py-4 font-display text-2xl font-semibold text-forest-900"
                 >
                   {link.label}
                 </motion.a>
@@ -124,13 +141,13 @@ export default function Navbar() {
               <a
                 href="#kontakt"
                 onClick={() => setOpen(false)}
-                className="btn-gold mt-8 w-full"
+                className="btn-primary mt-8 w-full"
               >
-                Kostenloses Angebot
+                Kostenloses Angebot anfordern
               </a>
               <a
                 href={`tel:${COMPANY.phoneHref}`}
-                className="mt-4 flex items-center justify-center gap-2 text-sm text-ivory/60"
+                className="mt-4 flex items-center justify-center gap-2 font-semibold text-forest"
               >
                 <Phone className="h-4 w-4" /> {COMPANY.phone}
               </a>

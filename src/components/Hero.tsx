@@ -1,149 +1,114 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
-import Hero3D from "./Hero3D";
-import Counter from "./ui/Counter";
-import { STATS } from "@/lib/data";
+import { motion } from "framer-motion";
+import { ArrowRight, Phone, Star, ShieldCheck, MapPin } from "lucide-react";
+import { COMPANY } from "@/lib/data";
 
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-
   const ease = [0.22, 1, 0.36, 1] as const;
 
+  const badges = [
+    { icon: Star, text: "4,9 / 5 Sterne" },
+    { icon: ShieldCheck, text: "Über 15 Jahre Erfahrung" },
+    { icon: MapPin, text: COMPANY.regionShort },
+  ];
+
   return (
-    <section
-      id="top"
-      ref={ref}
-      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden"
-    >
-      {/* Cinematic background image with Ken Burns + parallax */}
-      <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
-        <div className="absolute inset-0 animate-kenburns">
-          <Image
-            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2400&q=80"
-            alt="Modernes Luxus-Anwesen mit Natursteinpflasterung und gepflegtem Garten bei goldener Stunde"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+    <section id="top" className="relative">
+      <div className="relative min-h-[88vh] w-full overflow-hidden">
+        {/* Real project photo */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 animate-kenburns">
+            <Image
+              src="/projects/garten-rollrasen.jpg"
+              alt="Gepflegte Gartenanlage mit frischem Rollrasen, Natursteinpflaster und blühendem Baum"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+          {/* Natural green overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-forest-900/90 via-forest-800/70 to-forest-700/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-forest-900/80 via-transparent to-forest-900/20" />
         </div>
-        {/* Cinematic overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/80 via-obsidian/55 to-obsidian" />
-        <div className="absolute inset-0 bg-gradient-to-r from-obsidian/90 via-transparent to-obsidian/40" />
-        <div className="absolute inset-0 bg-radial-fade" />
-      </motion.div>
 
-      {/* Three.js floating premium paving stones */}
-      <Hero3D />
-
-      {/* Content */}
-      <motion.div
-        style={{ opacity }}
-        className="container-luxe relative z-20 flex flex-col items-center pt-24 text-center"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease }}
-          className="glass-gold mb-8 inline-flex items-center gap-2 rounded-full px-5 py-2"
-        >
-          <Sparkles className="h-3.5 w-3.5 text-gold" />
-          <span className="text-xs uppercase tracking-wider2 text-gold/90">
-            Premium Garten- &amp; Landschaftsbau
-          </span>
-        </motion.div>
-
-        <h1 className="max-w-5xl font-serif text-[2.6rem] font-medium leading-[1.05] text-ivory text-shadow-luxe sm:text-6xl md:text-7xl lg:text-[5.5rem]">
-          {"Außenanlagen auf".split(" ").map((word, i) => (
-            <motion.span
-              key={word}
-              className="mr-3 inline-block"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 + i * 0.12, ease }}
-            >
-              {word}
-            </motion.span>
-          ))}
-          <motion.span
-            className="text-gradient-gold italic"
-            initial={{ opacity: 0, y: 40 }}
+        <div className="container-w relative flex min-h-[88vh] flex-col justify-center py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.9, ease }}
+            transition={{ duration: 0.6, ease }}
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider3 text-cream backdrop-blur-sm"
           >
-            höchstem Niveau.
-          </motion.span>
-        </h1>
+            <span className="h-2 w-2 rounded-full bg-fern" />
+            Garten- &amp; Landschaftsbau aus Meisterhand
+          </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.1, ease }}
-          className="mt-8 max-w-2xl text-base leading-relaxed text-ivory/70 md:text-lg"
-        >
-          Exklusive Pflasterarbeiten, hochwertiger Zaunbau, professionelle
-          Gartenpflege und perfekter Rollrasen für anspruchsvolle Kunden.
-        </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease }}
+            className="mt-6 max-w-3xl text-balance font-display text-4xl font-bold leading-[1.1] text-white drop-shadow-sm sm:text-5xl md:text-6xl"
+          >
+            Ihr Partner für Garten- und Landschaftsbau
+          </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.3, ease }}
-          className="mt-11 flex flex-col items-center gap-4 sm:flex-row"
-        >
-          <a href="#kontakt" className="btn-gold group">
-            Kostenloses Angebot erhalten
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
-          <a href="#projekte" className="btn-ghost">
-            Projekte ansehen
-          </a>
-        </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease }}
+            className="mt-6 max-w-2xl text-lg leading-relaxed text-cream/90"
+          >
+            Pflasterarbeiten, Zaunbau, Gartenpflege und Rollrasen – zuverlässig,
+            professionell und termingerecht.
+          </motion.p>
 
-        {/* Animated statistics */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.5, ease }}
-          className="mt-20 grid w-full max-w-3xl grid-cols-3 gap-4 border-t border-white/10 pt-10"
-        >
-          {STATS.map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center gap-1">
-              <span className="font-serif text-3xl font-semibold text-gradient-gold sm:text-4xl md:text-5xl">
-                <Counter value={stat.value} suffix={stat.suffix} />
-              </span>
-              <span className="text-[11px] uppercase tracking-wider2 text-ivory/50 sm:text-xs">
-                {stat.label}
-              </span>
-            </div>
-          ))}
-        </motion.div>
-      </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3, ease }}
+            className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
+          >
+            <a href="#kontakt" className="btn-primary group bg-fern hover:bg-fern/90 text-forest-900">
+              Kostenloses Angebot anfordern
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+            <a href="#referenzen" className="btn-light">
+              Referenzen ansehen
+            </a>
+          </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        style={{ opacity }}
-        className="absolute bottom-8 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
-      >
-        <span className="text-[10px] uppercase tracking-luxe text-ivory/40">
-          Entdecken
-        </span>
-        <div className="flex h-10 w-6 items-start justify-center rounded-full border border-ivory/25 p-1.5">
-          <span className="h-2 w-1 animate-scroll-down rounded-full bg-gold" />
+          {/* Trust badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.45, ease }}
+            className="mt-12 flex flex-wrap items-center gap-x-7 gap-y-3"
+          >
+            {badges.map((b) => {
+              const Icon = b.icon;
+              return (
+                <span
+                  key={b.text}
+                  className="flex items-center gap-2 text-sm font-medium text-cream/90"
+                >
+                  <Icon className="h-4 w-4 text-fern" />
+                  {b.text}
+                </span>
+              );
+            })}
+          </motion.div>
         </div>
-      </motion.div>
+
+        {/* Quick-call bar (mobile) */}
+        <a
+          href={`tel:${COMPANY.phoneHref}`}
+          className="absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-forest shadow-lift sm:hidden"
+        >
+          <Phone className="h-4 w-4" /> {COMPANY.phone}
+        </a>
+      </div>
     </section>
   );
 }

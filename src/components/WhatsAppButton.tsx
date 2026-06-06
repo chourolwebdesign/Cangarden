@@ -20,22 +20,19 @@ export default function WhatsAppButton() {
       {show && (
         <motion.a
           href={`https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
-            "Hallo Can Garten, ich interessiere mich für ein Angebot."
+            "Hallo Can GaLaBau, ich interessiere mich für ein Angebot."
           )}`}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Per WhatsApp kontaktieren"
-          initial={{ opacity: 0, scale: 0, y: 20 }}
+          initial={{ opacity: 0, scale: 0, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0 }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          className="group fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gold-gradient text-obsidian shadow-gold-glow"
+          className="group fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lift"
         >
-          <span className="absolute inset-0 animate-ping rounded-full bg-gold/40" />
+          <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366]/40" />
           <MessageCircle className="relative h-7 w-7" />
-          <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg bg-charcoal px-3 py-2 text-xs font-medium text-ivory opacity-0 shadow-luxe transition-opacity duration-300 group-hover:opacity-100 md:block">
-            Schreiben Sie uns
-          </span>
         </motion.a>
       )}
     </AnimatePresence>

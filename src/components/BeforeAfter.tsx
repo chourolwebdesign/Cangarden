@@ -34,7 +34,6 @@ export default function BeforeAfter({ before, after, alt }: BeforeAfterProps) {
   const onPointerUp = () => {
     dragging.current = false;
   };
-
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") setPos((p) => Math.max(0, p - 4));
     if (e.key === "ArrowRight") setPos((p) => Math.min(100, p + 4));
@@ -43,7 +42,7 @@ export default function BeforeAfter({ before, after, alt }: BeforeAfterProps) {
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[16/10] w-full select-none overflow-hidden rounded-2xl"
+      className="relative aspect-[16/10] w-full select-none overflow-hidden rounded-2xl border border-stone/15 shadow-card"
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerLeave={onPointerUp}
@@ -53,26 +52,23 @@ export default function BeforeAfter({ before, after, alt }: BeforeAfterProps) {
         src={after}
         alt={`${alt} – nachher`}
         fill
-        sizes="(max-width: 768px) 100vw, 60vw"
+        sizes="(max-width: 768px) 100vw, 50vw"
         className="object-cover"
       />
-      <span className="absolute bottom-4 right-4 z-10 rounded-full bg-black/50 px-3 py-1 text-[10px] uppercase tracking-wider2 text-gold backdrop-blur-sm">
+      <span className="absolute bottom-4 right-4 z-10 rounded-full bg-forest px-3 py-1 text-xs font-semibold text-cream">
         Nachher
       </span>
 
-      {/* Before (clipped via clip-path so the image never squishes) */}
-      <div
-        className="absolute inset-0"
-        style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
-      >
+      {/* Before (clipped) */}
+      <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
         <Image
           src={before}
           alt={`${alt} – vorher`}
           fill
-          sizes="(max-width: 768px) 100vw, 60vw"
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
         />
-        <span className="absolute bottom-4 left-4 z-10 rounded-full bg-black/50 px-3 py-1 text-[10px] uppercase tracking-wider2 text-ivory/80 backdrop-blur-sm">
+        <span className="absolute bottom-4 left-4 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-forest">
           Vorher
         </span>
       </div>
@@ -90,8 +86,8 @@ export default function BeforeAfter({ before, after, alt }: BeforeAfterProps) {
         className="absolute top-0 z-20 flex h-full cursor-ew-resize items-center"
         style={{ left: `${pos}%`, transform: "translateX(-50%)" }}
       >
-        <div className="h-full w-0.5 bg-gold/90 shadow-gold-glow" />
-        <div className="absolute left-1/2 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full border border-gold/60 bg-obsidian/80 text-gold backdrop-blur-md">
+        <div className="h-full w-1 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.1)]" />
+        <div className="absolute left-1/2 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full border-2 border-white bg-forest text-cream shadow-lift">
           <MoveHorizontal className="h-5 w-5" />
         </div>
       </div>
