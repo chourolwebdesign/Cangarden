@@ -5,7 +5,6 @@ import Reveal from "./Reveal";
 interface SectionHeadingProps {
   eyebrow: string;
   title: string;
-  highlight?: string;
   description?: string;
   align?: "left" | "center";
   light?: boolean;
@@ -14,41 +13,38 @@ interface SectionHeadingProps {
 export default function SectionHeading({
   eyebrow,
   title,
-  highlight,
   description,
   align = "center",
+  light = false,
 }: SectionHeadingProps) {
   const isCenter = align === "center";
   return (
     <div
-      className={`flex flex-col gap-5 ${
+      className={`flex flex-col gap-4 ${
         isCenter ? "items-center text-center" : "items-start text-left"
       }`}
     >
       <Reveal direction="up">
-        <div className="flex items-center gap-3">
-          <span className="h-px w-8 bg-gold/60" />
-          <span className="heading-eyebrow">{eyebrow}</span>
-          <span className="h-px w-8 bg-gold/60" />
-        </div>
+        <span className={`eyebrow ${light ? "text-sage-light" : "text-moss"}`}>
+          <span className={`h-1.5 w-1.5 rounded-full ${light ? "bg-sage-light" : "bg-fern"}`} />
+          {eyebrow}
+        </span>
       </Reveal>
       <Reveal direction="up" delay={0.08}>
-        <h2 className="max-w-3xl font-serif text-4xl font-medium leading-[1.1] text-ivory sm:text-5xl md:text-6xl">
+        <h2
+          className={`max-w-3xl text-balance font-display text-3xl font-bold leading-[1.15] sm:text-4xl md:text-[2.75rem] ${
+            light ? "text-white" : "text-forest-900"
+          }`}
+        >
           {title}
-          {highlight && (
-            <>
-              {" "}
-              <span className="text-gradient-gold italic">{highlight}</span>
-            </>
-          )}
         </h2>
       </Reveal>
       {description && (
         <Reveal direction="up" delay={0.16}>
           <p
-            className={`max-w-2xl text-base leading-relaxed text-ivory/55 md:text-lg ${
-              isCenter ? "mx-auto" : ""
-            }`}
+            className={`max-w-2xl text-base leading-relaxed md:text-lg ${
+              light ? "text-white/80" : "text-bark/70"
+            } ${isCenter ? "mx-auto" : ""}`}
           >
             {description}
           </p>

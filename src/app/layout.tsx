@@ -1,67 +1,53 @@
 import type { Metadata, Viewport } from "next";
-import { Cinzel, Playfair_Display, Manrope } from "next/font/google";
+import { Bitter, Inter } from "next/font/google";
 import "./globals.css";
 import { COMPANY } from "@/lib/data";
 
-const cinzel = Cinzel({
+const bitter = Bitter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-cinzel",
+  variable: "--font-bitter",
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-manrope",
-  display: "swap",
-});
-
-const siteUrl = "https://can-gartenbau.de";
+const siteUrl = "https://can-galabau.de";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${COMPANY.name} | Außenanlagen auf höchstem Niveau`,
+    default: `${COMPANY.name} | Ihr Partner für Garten- und Landschaftsbau`,
     template: `%s | ${COMPANY.short}`,
   },
   description:
-    "Exklusive Pflasterarbeiten, hochwertiger Zaunbau, professionelle Gartenpflege und perfekter Rollrasen für anspruchsvolle Kunden. Meisterhafte Qualität und deutsche Präzision.",
+    "Pflasterarbeiten, Zaunbau, Gartenpflege und Rollrasen – zuverlässig, professionell und termingerecht. Ihr erfahrener Garten- und Landschaftsbau-Betrieb in der Region.",
   keywords: [
     "Garten- und Landschaftsbau",
+    "GaLaBau",
     "Pflasterarbeiten",
     "Zaunbau",
     "Gartenpflege",
     "Rollrasen",
-    "Naturstein",
+    "Einfahrt pflastern",
+    "Terrasse",
     "Düsseldorf",
-    "Premium Gartenbau",
-    "Luxus Außenanlagen",
   ],
   authors: [{ name: COMPANY.name }],
-  creator: COMPANY.name,
   openGraph: {
     type: "website",
     locale: "de_DE",
     url: siteUrl,
     siteName: COMPANY.name,
-    title: `${COMPANY.name} | Außenanlagen auf höchstem Niveau`,
+    title: `${COMPANY.name} | Garten- und Landschaftsbau`,
     description:
-      "Exklusive Pflasterarbeiten, Zaunbau, Gartenpflege und Rollrasen für anspruchsvolle Kunden.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${COMPANY.name}`,
-    description:
-      "Exklusive Pflasterarbeiten, Zaunbau, Gartenpflege und Rollrasen für anspruchsvolle Kunden.",
+      "Pflasterarbeiten, Zaunbau, Gartenpflege und Rollrasen – zuverlässig, professionell und termingerecht.",
+    images: [{ url: "/projects/garten-rollrasen.jpg", width: 1200, height: 630 }],
   },
   robots: {
     index: true,
@@ -71,16 +57,16 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0A",
+  themeColor: "#2F4A36",
   width: "device-width",
   initialScale: 1,
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "LandscapingBusiness",
   name: COMPANY.name,
-  image: `${siteUrl}/og.jpg`,
+  image: `${siteUrl}/projects/garten-rollrasen.jpg`,
   "@id": siteUrl,
   url: siteUrl,
   telephone: COMPANY.phone,
@@ -91,20 +77,17 @@ const jsonLd = {
     addressLocality: COMPANY.address.city,
     addressCountry: "DE",
   },
-  priceRange: "€€€€",
-  areaServed: "Nordrhein-Westfalen",
+  areaServed: COMPANY.regionShort,
   description:
-    "Premium Garten- und Landschaftsbau: Pflasterarbeiten, Zaunbau, Gartenpflege und Rollrasen.",
+    "Garten- und Landschaftsbau: Pflasterarbeiten, Zaunbau, Gartenpflege und Rollrasen.",
+  openingHours: "Mo-Fr 07:30-18:00",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="de"
-      className={`${cinzel.variable} ${playfair.variable} ${manrope.variable}`}
-    >
+    <html lang="de" className={`${bitter.variable} ${inter.variable}`}>
       <body>
         <script
           type="application/ld+json"

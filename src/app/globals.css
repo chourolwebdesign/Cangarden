@@ -3,11 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --gold: #d4af37;
-    --gold-light: #e8c670;
-  }
-
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -15,97 +10,82 @@
 
   html {
     scroll-behavior: smooth;
-    background-color: #0a0a0a;
+    background-color: #faf8f2;
   }
 
   body {
-    @apply bg-obsidian text-ivory/80 font-sans antialiased;
+    @apply bg-cream text-bark font-sans antialiased;
     overflow-x: hidden;
   }
 
   ::selection {
-    background-color: rgba(212, 175, 55, 0.85);
-    color: #0a0a0a;
+    background-color: rgba(74, 114, 84, 0.9);
+    color: #faf8f2;
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0a0a;
+    background: #efe9dd;
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #d4af37, #a8862a);
+    background: #4a7254;
     border-radius: 999px;
-    border: 2px solid #0a0a0a;
+    border: 2px solid #efe9dd;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #e8c670;
+    background: #2f4a36;
   }
 }
 
 @layer components {
-  .container-luxe {
-    @apply mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-16;
+  .container-w {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
   }
 
-  .text-gradient-gold {
-    @apply bg-gold-gradient bg-clip-text text-transparent;
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider3 text-moss;
   }
 
-  .heading-eyebrow {
-    @apply font-sans text-xs uppercase tracking-luxe text-gold/80;
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-forest px-7 py-3.5
+      font-semibold text-cream shadow-soft transition-all duration-300
+      hover:bg-forest-600 hover:shadow-lift focus-visible:outline focus-visible:outline-2
+      focus-visible:outline-offset-2 focus-visible:outline-forest;
   }
 
-  .glass {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-forest/25
+      bg-white/70 px-7 py-3.5 font-semibold text-forest transition-all duration-300
+      hover:border-forest hover:bg-white focus-visible:outline focus-visible:outline-2
+      focus-visible:outline-offset-2 focus-visible:outline-forest;
   }
 
-  .glass-gold {
-    background: rgba(212, 175, 55, 0.04);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(212, 175, 55, 0.16);
+  .btn-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/70
+      bg-white/10 px-7 py-3.5 font-semibold text-white backdrop-blur-sm transition-all
+      duration-300 hover:bg-white hover:text-forest;
   }
 
-  .hairline {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-gold/30 to-transparent;
+  .card {
+    @apply rounded-3xl border border-stone/15 bg-white shadow-card;
   }
 
-  .btn-gold {
-    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full
-      bg-gold-gradient px-8 py-4 font-sans text-sm font-semibold uppercase tracking-wider2
-      text-obsidian transition-all duration-500 hover:shadow-gold-glow;
-  }
-
-  .btn-ghost {
-    @apply relative inline-flex items-center justify-center gap-2 rounded-full border
-      border-ivory/20 bg-white/0 px-8 py-4 font-sans text-sm font-semibold uppercase
-      tracking-wider2 text-ivory/90 transition-all duration-500 hover:border-gold/60
-      hover:text-gold hover:bg-white/5;
+  .leaf-divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-sage to-transparent;
   }
 }
 
 @layer utilities {
-  .text-shadow-luxe {
-    text-shadow: 0 4px 40px rgba(0, 0, 0, 0.7);
+  .text-balance {
+    text-wrap: balance;
   }
-
-  .mask-fade-b {
-    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  }
-
-  .perspective {
-    perspective: 1200px;
+  .img-cover {
+    @apply h-full w-full object-cover;
   }
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
