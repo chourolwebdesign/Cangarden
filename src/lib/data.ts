@@ -24,20 +24,22 @@ export type ServiceId =
 
 export const COMPANY = {
   name: "Can Garten- und Landschaftsbau",
-  short: "Can GaLaBau",
-  phone: "+49 170 1234567",
-  phoneHref: "+491701234567",
-  whatsapp: "491701234567",
-  email: "maisonchourole@gmail.com",
+  short: "CAN GaLaBau",
+  owner: "Erkan Can",
+  phone: "0174 4696436",
+  phoneHref: "+491744696436",
+  whatsapp: "491744696436",
+  email: "info@cangartenlandschaftsbau.de",
   address: {
-    street: "Gartenstraße 12",
-    city: "40210 Düsseldorf",
+    street: "Hospitalstraße 43",
+    city: "65439 Flörsheim am Main",
     country: "Deutschland",
   },
   hours: "Mo – Fr: 07:30 – 18:00 Uhr",
-  regionShort: "Nordrhein-Westfalen",
-  region: "Düsseldorf, Neuss, Meerbusch, Krefeld & Umgebung",
-  mapEmbed: "https://www.google.com/maps?q=D%C3%BCsseldorf%2C+Germany&output=embed",
+  regionShort: "Rhein-Main-Gebiet",
+  region: "Flörsheim, Frankfurt, Wiesbaden, Mainz & Rhein-Main",
+  mapEmbed:
+    "https://www.google.com/maps?q=Hospitalstra%C3%9Fe+43%2C+65439+Fl%C3%B6rsheim+am+Main&output=embed",
 };
 
 export interface Stat {
@@ -133,7 +135,7 @@ export const PROJECTS: Project[] = [
     title: "Einfahrt in Anthrazit",
     category: "einfahrt",
     categoryLabel: "Einfahrt",
-    location: "Düsseldorf",
+    location: "Flörsheim am Main",
     image: "/projects/einfahrt-dunkel.jpg",
   },
   {
@@ -141,7 +143,7 @@ export const PROJECTS: Project[] = [
     title: "Gartenanlage mit Rollrasen",
     category: "garten",
     categoryLabel: "Garten & Rasen",
-    location: "Meerbusch",
+    location: "Hofheim am Taunus",
     image: "/projects/garten-rollrasen.jpg",
     wide: true,
   },
@@ -150,7 +152,7 @@ export const PROJECTS: Project[] = [
     title: "Antik-Pflaster Einfahrt",
     category: "einfahrt",
     categoryLabel: "Einfahrt",
-    location: "Neuss",
+    location: "Hochheim am Main",
     image: "/projects/einfahrt-antik-sand.jpg",
   },
   {
@@ -158,7 +160,7 @@ export const PROJECTS: Project[] = [
     title: "Terrasse mit Großformatplatten",
     category: "terrasse",
     categoryLabel: "Terrasse",
-    location: "Krefeld",
+    location: "Kelkheim",
     image: "/projects/terrasse-grossformat.jpg",
   },
   {
@@ -166,7 +168,7 @@ export const PROJECTS: Project[] = [
     title: "Terrasse in Holzoptik",
     category: "terrasse",
     categoryLabel: "Terrasse",
-    location: "Ratingen",
+    location: "Bad Soden",
     image: "/projects/terrasse-holzoptik.jpg",
   },
   {
@@ -174,7 +176,7 @@ export const PROJECTS: Project[] = [
     title: "Eingangstreppe & Podest",
     category: "wege",
     categoryLabel: "Treppe",
-    location: "Kaarst",
+    location: "Kriftel",
     image: "/projects/eingangstreppe.jpg",
   },
   {
@@ -182,7 +184,7 @@ export const PROJECTS: Project[] = [
     title: "Hofeinfahrt in Hellgrau",
     category: "einfahrt",
     categoryLabel: "Einfahrt",
-    location: "Düsseldorf",
+    location: "Rüsselsheim",
     image: "/projects/einfahrt-hellgrau.jpg",
   },
   {
@@ -190,7 +192,7 @@ export const PROJECTS: Project[] = [
     title: "Hauszugang & Gartenweg",
     category: "wege",
     categoryLabel: "Wege",
-    location: "Neuss",
+    location: "Hattersheim",
     image: "/projects/weg-hauszugang.jpg",
     wide: true,
   },
@@ -199,7 +201,7 @@ export const PROJECTS: Project[] = [
     title: "Verbundpflaster Hofeinfahrt",
     category: "einfahrt",
     categoryLabel: "Einfahrt",
-    location: "Willich",
+    location: "Wiesbaden",
     image: "/projects/hofeinfahrt-verbund.jpg",
   },
   {
@@ -207,7 +209,7 @@ export const PROJECTS: Project[] = [
     title: "Pflasterfläche im Sandton",
     category: "einfahrt",
     categoryLabel: "Einfahrt",
-    location: "Korschenbroich",
+    location: "Frankfurt-Höchst",
     image: "/projects/pflaster-sandfarben.jpg",
   },
   {
@@ -215,7 +217,7 @@ export const PROJECTS: Project[] = [
     title: "Geschwungene Einfahrt",
     category: "einfahrt",
     categoryLabel: "Einfahrt",
-    location: "Meerbusch",
+    location: "Eppstein",
     image: "/projects/einfahrt-anthrazit.jpg",
   },
 ];
@@ -323,7 +325,7 @@ export interface Testimonial {
 export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Familie Becker",
-    location: "Meerbusch",
+    location: "Flörsheim am Main",
     rating: 5,
     service: "Pflasterarbeiten",
     quote:
@@ -331,7 +333,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     name: "Michael Hoffmann",
-    location: "Düsseldorf",
+    location: "Hofheim am Taunus",
     rating: 5,
     service: "Terrasse",
     quote:
@@ -339,7 +341,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     name: "Familie Yılmaz",
-    location: "Neuss",
+    location: "Rüsselsheim",
     rating: 5,
     service: "Rollrasen & Pflege",
     quote:
@@ -347,7 +349,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     name: "Sabine Krüger",
-    location: "Krefeld",
+    location: "Hochheim am Main",
     rating: 5,
     service: "Zaun & Einfahrt",
     quote:
@@ -356,14 +358,17 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const SERVICE_AREAS = [
-  "Düsseldorf",
-  "Neuss",
-  "Meerbusch",
-  "Krefeld",
-  "Ratingen",
-  "Kaarst",
-  "Willich",
-  "Korschenbroich",
+  "Flörsheim am Main",
+  "Hofheim am Taunus",
+  "Hochheim am Main",
+  "Rüsselsheim",
+  "Kelkheim",
+  "Hattersheim",
+  "Kriftel",
+  "Bad Soden",
+  "Frankfurt am Main",
+  "Wiesbaden",
+  "Mainz",
 ];
 
 export const NAV_LINKS = [

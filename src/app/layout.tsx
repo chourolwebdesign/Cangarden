@@ -17,7 +17,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = "https://can-galabau.de";
+const siteUrl = "https://www.cangartenlandschaftsbau.de";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -36,7 +36,11 @@ export const metadata: Metadata = {
     "Rollrasen",
     "Einfahrt pflastern",
     "Terrasse",
-    "Düsseldorf",
+    "Flörsheim am Main",
+    "Hofheim",
+    "Frankfurt",
+    "Wiesbaden",
+    "Rhein-Main",
   ],
   authors: [{ name: COMPANY.name }],
   openGraph: {

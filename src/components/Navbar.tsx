@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, MapPin, Clock } from "lucide-react";
 import { NAV_LINKS, COMPANY } from "@/lib/data";
@@ -59,18 +60,15 @@ export default function Navbar() {
         }`}
       >
         <nav className="container-w flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-3" aria-label={COMPANY.name}>
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest font-display text-lg font-bold text-cream">
-              C
-            </span>
-            <span className="flex flex-col leading-none">
-              <span className="font-display text-lg font-bold text-forest-900">
-                Can <span className="text-moss">GaLaBau</span>
-              </span>
-              <span className="text-[10px] uppercase tracking-wider3 text-bark/50">
-                Garten- &amp; Landschaftsbau
-              </span>
-            </span>
+          <a href="#top" className="flex items-center" aria-label={COMPANY.name}>
+            <Image
+              src="/brand/can-logo.png"
+              alt={`${COMPANY.name} Logo`}
+              width={200}
+              height={101}
+              priority
+              className="h-11 w-auto md:h-12"
+            />
           </a>
 
           <ul className="hidden items-center gap-8 lg:flex">
@@ -113,9 +111,13 @@ export default function Navbar() {
             className="fixed inset-0 z-[60] flex flex-col bg-cream lg:hidden"
           >
             <div className="container-w flex items-center justify-between py-4">
-              <span className="font-display text-lg font-bold text-forest-900">
-                Can <span className="text-moss">GaLaBau</span>
-              </span>
+              <Image
+                src="/brand/can-logo.png"
+                alt={`${COMPANY.name} Logo`}
+                width={180}
+                height={91}
+                className="h-10 w-auto"
+              />
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Menü schließen"

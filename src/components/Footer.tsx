@@ -24,6 +24,9 @@ export default function Footer() {
               Ihr zuverlässiger Partner für Pflasterarbeiten, Zaunbau,
               Gartenpflege und Rollrasen in {COMPANY.regionShort}.
             </p>
+            <p className="mt-4 text-sm font-medium text-cream/75">
+              Inh. {COMPANY.owner}
+            </p>
           </div>
 
           <div>
